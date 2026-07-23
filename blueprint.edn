@@ -1,4 +1,4 @@
-{:itonami.blueprint/id "cloud-itonami-0124"
+{:itonami.blueprint/id "cloud-itonami-isic-0124"
  :itonami.blueprint/name "Pome- and Stone-Fruit Orchard Operations Coordination"
  :itonami.blueprint/isic-rev5 "0124"
  :itonami.blueprint/domain :agriculture/pome-stone-fruit-growing
@@ -9,4 +9,4 @@
  :itonami.blueprint/required-technologies [:robotics :identity :forms :audit-ledger]
  :itonami.blueprint/optional-technologies [:telemetry :optimization :dmn :bpmn]
  :itonami.blueprint/status :public-oss
- :itonami.blueprint/maturity :implemented}
+ :itonami.blueprint/maturity :blueprint}
