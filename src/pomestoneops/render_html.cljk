@@ -29,7 +29,7 @@
   Two consecutive runs are byte-identical; verify by rendering to two
   paths and diffing.
 
-  Usage: `clojure -M:dev:render-html [out-file]`
+  Usage: `kbb -M:dev:render-html [out-file]`
   (default `docs/samples/operator-console.html`)."
   (:require [kotoba.lang.text :as str]
             [jp-go-dds.skin]
@@ -362,7 +362,7 @@
 
      "  <section class=\"card\">\n"
      "    <h2>Registered orchard blocks</h2>\n"
-     "    <p class=\"muted\">Generated at build time by <code>pomestoneops.render-html</code> (<code>clojure -M:dev:render-html</code>) from this repo's own seed data. "
+     "    <p class=\"muted\">Generated at build time by <code>pomestoneops.render-html</code> (<code>kbb -M:dev:render-html</code>) from this repo's own seed data. "
      "Both ids exist verbatim in the repository: <code>orchard-001</code> in <code>" (esc (get orchard-provenance "orchard-001")) "</code>, "
      "<code>orchard-002</code> in <code>" (esc (get orchard-provenance "orchard-002")) "</code>. No orchard-id on this page was invented; "
      "<code>orchard-002</code> carries no <code>:fruit-class</code> because the seed record does not have one.</p>\n"
