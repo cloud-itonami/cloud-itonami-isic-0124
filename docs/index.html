@@ -2463,7 +2463,7 @@ code { font-family: var(--font-family-mono); background: var(--color-neutral-sol
         <div class="pf-pitch">
           <p>Open Occupation Blueprint for ISIC Rev. 4 0124: Growing of pome fruits and stone fruits.</p>
           <p>This repository implements a forkable OSS pome/stone-fruit orchard operations coordinator: a facility-management robot manages orchard/block record logging, field-operation (pruning/thinning/ spraying/harvest) scheduling, and supply procurement under a governor-gated actor, so a pome/stone-fruit-growing operation (apple, pear, quince, peach, plum, cherry, apricot orchards) keeps its own operational records and maintains full transparency over decisions.</p>
-          <p>Maturity: :implemented. src/pomestoneops/ implements the PomeStoneOpsAdvisor (pomestoneops.advisor) and the independent PomeStoneOperationsGovernor (pomestoneops.governor), composed by pomestoneops.operation following the itonami actor pattern (ADR-2607011000): advise -&gt; govern -&gt; phase-gate -&gt; commit | escalate | hold. See [Testing](#testing) below for the current green test count (clojure -M:test).</p>
+          <p>Maturity: :implemented. src/pomestoneops/ implements the PomeStoneOpsAdvisor (pomestoneops.advisor) and the independent PomeStoneOperationsGovernor (pomestoneops.governor), composed by pomestoneops.operation following the itonami actor pattern (ADR-2607011000): advise -&gt; govern -&gt; phase-gate -&gt; commit | escalate | hold. See [Testing](#testing) below for the current green test count (kbb -M:test).</p>
         </div>
       </div>
       <p class="pf-meta">Domain <code>agriculture/pome-stone-fruit-growing</code> · Governor <code>pome-stone-operations-governor</code> · License <code>AGPL-3.0-or-later</code></p>
