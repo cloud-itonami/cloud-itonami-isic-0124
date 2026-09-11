@@ -44,11 +44,11 @@
   "The ONLY orchard-ids this console feeds the actor. Both are copied
   VERBATIM from this repo's own seed data -- grep them yourself:
 
-    \"orchard-001\" -- src/pomestoneops/sim.cljc `:initial-orchards`
+    \"orchard-001\" -- src/pomestoneops/sim.cljk `:initial-orchards`
                      (`{:id .. :name \"Test Orchard Block\"
                         :fruit-class \"apple\"}`), and the fixture every
-                     `test/pomestoneops/governor_test.cljc` case seeds.
-    \"orchard-002\" -- test/pomestoneops/store_test.cljc `add-orchard-test`
+                     `test/pomestoneops/governor_test.cljk` case seeds.
+    \"orchard-002\" -- test/pomestoneops/store_test.cljk `add-orchard-test`
                      (`{:id \"orchard-002\" :name \"New Orchard Block\"}`).
 
   `orchard-002` genuinely has no `:fruit-class` on file; that is the
@@ -65,8 +65,8 @@
   "id -> the file this seed record was copied from (build provenance,
   deliberately kept OUT of the orchard table so that table contains
   only real `pomestoneops` domain fields)."
-  {"orchard-001" "src/pomestoneops/sim.cljc (:initial-orchards)"
-   "orchard-002" "test/pomestoneops/store_test.cljc (add-orchard-test)"})
+  {"orchard-001" "src/pomestoneops/sim.cljk (:initial-orchards)"
+   "orchard-002" "test/pomestoneops/store_test.cljk (add-orchard-test)"})
 
 (def ^:private operator-context
   "Actor identity taken verbatim from `pomestoneops.sim/demo`'s context.
@@ -80,7 +80,7 @@
   "Every scenario below uses a seeded orchard-id and request keys that
   `pomestoneops.advisor`/`pomestoneops.governor` actually read. The
   proposals that trip HARD holds are the same ones
-  `test/pomestoneops/governor_test.cljc` asserts on -- they reach the
+  `test/pomestoneops/governor_test.cljk` asserts on -- they reach the
   Governor through the real MockAdvisor (its fallback branch emits
   `{:op <requested-op> :effect :propose}` for any op outside the
   advisor's `case`, which is exactly how an out-of-allowlist or blocked
