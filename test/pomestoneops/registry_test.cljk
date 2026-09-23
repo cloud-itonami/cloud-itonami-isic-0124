@@ -1,5 +1,5 @@
 (ns pomestoneops.registry-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [pomestoneops.registry :as registry]))
 
 (deftest cost-exceeds-threshold-test
