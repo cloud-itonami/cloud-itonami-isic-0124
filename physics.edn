@@ -1,0 +1,43 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:dev:physics` runs it.
+;;
+;; README "Robotics premise": a facility-management robot keeps orchard block
+;; records, schedules field operations and handles supplies for a pome and
+;; stone fruit grower (ISIC 0124, apples, pears, peaches, cherries). Its
+;; physical work: lifting a picking bag load into the bin, moving full bins to
+;; the cold store, and bringing apples down to storage temperature.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isic-0124"
+ :cases
+ [{:id :picking-bag-into-bin
+   :kind :manipulator
+   :procedure "arm takes a filled apple picking bag from the platform and lowers it gently into the bin"
+   :params {:l1-m 0.55 :l2-m 0.45 :m1-kg 6.0 :m2-kg 4.0
+            :from [0.40 0.90] :to [0.70 0.10] :duration-s 3.0 :steps 600}
+   :sweep {:param :payload-kg :values [5.0 10.0 15.0 20.0 25.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 150.0 :basis "estimate: continuous shoulder torque of a 10-15 kg-class arm"}
+   :boundary {:lo 1.0 :hi 60.0}}
+  {:id :apple-bin-to-cold-store
+   :kind :transport
+   :procedure "orchard platform carries a full apple bin from the hillside block down the orchard lane and up to the cold-store dock"
+   :params {:mass-kg 450.0 :payload-kg 400.0 :distance-m 300.0 :v-max-mps 2.0 :a-max-mps2 0.6
+            :brake-decel-mps2 1.5 :drive-force-n 1800.0 :crr 0.06
+            :cog-height-m 0.85 :support-half-length-m 0.75 :max-time-s 3600.0}
+   :sweep {:param :slope-deg :values [0.0 3.0 6.0 9.0 12.0]}
+   :quantity :cycle-time-s
+   :limit {:max 170.0 :basis "estimate: one bin per leg so the dock is fed at the picking platform's bin rate (a full bin ~400 kg is also an estimate)"}
+   :boundary {:lo 0.0 :hi 20.0}}
+  {:id :apple-room-cooling
+   :kind :thermal
+   :procedure "bins of apples are cooled in a 0.5 C storage room; the fruit centre temperature is judged"
+   :params {:thickness-m 0.038 :conductivity-w-mk 0.42 :density-kg-m3 840.0 :specific-heat-j-kgk 3600.0
+            :t0-c 22.0 :t-hot-c 0.5 :h-front-w-m2k 10.0 :t-back-ambient-c 22.0 :h-back-w-m2k 0.0
+            :threshold-c 99.0 :nodes 11}
+   :sweep {:param :duration-s :values [7200.0 14400.0 28800.0 43200.0 86400.0]}
+   :quantity :final-back-c
+   :limit {:max 3.0 :basis "estimate: apples brought to within ~3 C of room temperature within the first day of storage"}
+   :boundary {:lo 3600.0 :hi 172800.0}}]}
