@@ -17,7 +17,7 @@
  ;;
  ;; jp-go-digital-design-system (DADS) supplies the <style> block for the
  ;; build-time operator console (`pomestoneops.render-html`) -- the CSS is
- ;; never hand-written here. See CLAUDE.md "UI/UX 標準 -- 基本 design system
+ ;; never hand-written here. See AGENTS.md "UI/UX 標準 -- 基本 design system
  ;; は jp-go-dds".
  :deps {
         ;; kotoba.robotics.process: the process-physics solvers and probe this
